@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+  <file product-name="t3v_backend" source-language="en" target-language="de" datatype="plaintext" original="messages">
+    <header />
+
+    <body>
+      <!-- === Additional TCA columns === -->
+
+      <trans-unit id="tt_content.label">
+        <source>Label</source>
+        <target>Beschriftung</target>
+      </trans-unit>
+
+      <!-- === T3v Generator === -->
+    </body>
+  </file>
+</xliff>
