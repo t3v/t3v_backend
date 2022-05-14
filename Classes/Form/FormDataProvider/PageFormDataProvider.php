@@ -20,34 +20,34 @@ class PageFormDataProvider implements FormDataProviderInterface
     /**
      * Adds data to the form data.
      *
-     * @param array $formData The form data
-     * @return array The modified form data
+     * @param array $result The initialized result
+     * @return array The result filled with more data
      */
-    public function addData(array $formData): array
+    public function addData(array $result): array
     {
-        if ($formData['tableName'] !== $this::TABLE_NAME) {
-            return $formData;
+        if ($result['tableName'] !== $this::TABLE_NAME) {
+            return $result;
         }
 
-        return $this->addAuthorDetailsToFormData($formData);
+        return $this->addAuthorData($result);
     }
 
     /**
-     * Adds author details to the form data if not already available.
+     * Adds author data to the result if not already available.
      *
-     * @param array $formData The form data
-     * @return array The modified form data
+     * @param array $result The initialized result
+     * @return array The result filled with author data
      */
-    protected function addAuthorDetailsToFormData(array $formData): array
+    protected function addAuthorData(array $result): array
     {
-        if (empty($formData['databaseRow']['author'])) {
-            $formData['databaseRow']['author'] = $GLOBALS['BE_USER']->user['realName'];
+        if (empty($result['databaseRow']['author'])) {
+            $result['databaseRow']['author'] = $GLOBALS['BE_USER']->user['realName'];
         }
 
-        if (empty($formData['databaseRow']['author_email'])) {
-            $formData['databaseRow']['author_email'] = $GLOBALS['BE_USER']->user['email'];
+        if (empty($result['databaseRow']['author_email'])) {
+            $result['databaseRow']['author_email'] = $GLOBALS['BE_USER']->user['email'];
         }
 
-        return $formData;
+        return $result;
     }
 }

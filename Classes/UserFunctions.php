@@ -19,7 +19,7 @@ class UserFunctions
      *
      * @param array $parameters The parameters
      */
-    public function processLabel(&$parameters): void
+    public function processLabel(array &$parameters): void
     {
         $record = BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
 

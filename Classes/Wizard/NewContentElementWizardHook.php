@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace T3v\T3vBackend\Wizard;
 
+use TYPO3\CMS\Backend\Controller\ContentElement\NewContentElementController;
 use TYPO3\CMS\Backend\Wizard\NewContentElementWizardHookInterface;
 
 /**
@@ -16,8 +17,7 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
      * Manipulates the wizard items.
      *
      * @param array $wizardItems The wizard items
-     * @param \TYPO3\CMS\Backend\Controller\ContentElement\NewContentElementController $parentObject The parent object
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @param NewContentElementController $parentObject The parent object
      */
     public function manipulateWizardItems(&$wizardItems, &$parentObject): void
     {
@@ -99,7 +99,7 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
      */
     protected function moveWizardItemToTop(array &$wizardItems, string $key): void
     {
-        $temp = array($key => $wizardItems[$key]);
+        $temp = [$key => $wizardItems[$key]];
 
         unset($wizardItems[$key]);
 
