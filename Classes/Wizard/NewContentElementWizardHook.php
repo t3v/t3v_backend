@@ -27,6 +27,7 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
         $customElements = [];
         $formElements = [];
         $specialElements = [];
+        $legacyElements = [];
 
         foreach ($wizardItems as $key => $value) {
             if (strpos($key, 'common') !== false) {
@@ -51,6 +52,16 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
 
             if (strpos($key, 'special') !== false) {
                 $specialElements[] = $key;
+            }
+
+            if (strpos($key, 'legacy') !== false) {
+                $legacyElements[] = $key;
+            }
+        }
+
+        if (!empty($legacyElements)) { // Moves the legacy elements to the top:
+            foreach (array_reverse($legacyElements) as $legacyElement) {
+                $this->moveWizardItemToTop($wizardItems, $legacyElement);
             }
         }
 
