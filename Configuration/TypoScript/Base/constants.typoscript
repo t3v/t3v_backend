@@ -1,8 +1,12 @@
-# ------------------------------
-# | T3v Backend Base Constants |
-# ------------------------------
+/*
+  ------------------------------
+  | T3v Backend Base Constants |
+  ------------------------------
+*/
 
-# === Plugin Constants ===
+/*
+  === Plugin Constants ===
+*/
 
 plugin {
   tx_t3vbackend {
@@ -52,4 +56,6 @@ plugin {
   }
 }
 
-# === T3v Generator ===
+/*
+  === T3v Generator ===
+*/
