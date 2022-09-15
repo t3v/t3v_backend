@@ -21,6 +21,10 @@ class UserFunctions
      */
     public function processLabel(array &$parameters): void
     {
+        if (!($parameters['row']['pid'] ?? 0)) {
+            return;
+        }
+
         $record = BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
 
         if (!empty($record)) {
