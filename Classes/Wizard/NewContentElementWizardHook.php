@@ -22,24 +22,27 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
     public function manipulateWizardItems(&$wizardItems, &$parentObject): void
     {
         $commonElements = [];
+        $containers = [];
         $contentObjects = [];
-        $gridElements = [];
         $customElements = [];
         $formElements = [];
-        $specialElements = [];
+        $gridElements = [];
         $legacyElements = [];
+        $menuElements = [];
+        $plugins = [];
+        $specialElements = [];
 
         foreach ($wizardItems as $key => $value) {
             if (strpos($key, 'common') !== false) {
                 $commonElements[] = $key;
             }
 
-            if (strpos($key, 'contentObject') !== false) {
-                $contentObjects[] = $key;
+            if (strpos($key, 'container') !== false) {
+                $containers[] = $key;
             }
 
-            if (strpos($key, 'gridelement') !== false) {
-                $gridElements[] = $key;
+            if (strpos($key, 'contentObject') !== false) {
+                $contentObjects[] = $key;
             }
 
             if (strpos($key, 'custom') !== false) {
@@ -50,12 +53,24 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
                 $formElements[] = $key;
             }
 
-            if (strpos($key, 'special') !== false) {
-                $specialElements[] = $key;
+            if (strpos($key, 'gridelement') !== false) {
+                $gridElements[] = $key;
             }
 
             if (strpos($key, 'legacy') !== false) {
                 $legacyElements[] = $key;
+            }
+
+            if (strpos($key, 'menu') !== false) {
+                $menuElements[] = $key;
+            }
+
+            if (strpos($key, 'plugin') !== false) {
+                $plugins[] = $key;
+            }
+
+            if (strpos($key, 'special') !== false) {
+                $specialElements[] = $key;
             }
         }
 
@@ -65,9 +80,21 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
             }
         }
 
+        if (!empty($plugins)) { // Moves the plugins to the top:
+            foreach (array_reverse($plugins) as $plugin) {
+                $this->moveWizardItemToTop($wizardItems, $plugin);
+            }
+        }
+
         if (!empty($specialElements)) { // Moves the special elements to the top:
             foreach (array_reverse($specialElements) as $specialElement) {
                 $this->moveWizardItemToTop($wizardItems, $specialElement);
+            }
+        }
+
+        if (!empty($menuElements)) { // Moves the menu elements to the top:
+            foreach (array_reverse($menuElements) as $menuElement) {
+                $this->moveWizardItemToTop($wizardItems, $menuElement);
             }
         }
 
@@ -83,15 +110,21 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
             }
         }
 
+        if (!empty($contentObjects)) { // Moves the content objects to the top:
+            foreach (array_reverse($contentObjects) as $contentObject) {
+                $this->moveWizardItemToTop($wizardItems, $contentObject);
+            }
+        }
+
         if (!empty($gridElements)) { // Moves the grid elements to the top:
             foreach (array_reverse($gridElements) as $gridElement) {
                 $this->moveWizardItemToTop($wizardItems, $gridElement);
             }
         }
 
-        if (!empty($contentObjects)) { // Moves the content objects to the top:
-            foreach (array_reverse($contentObjects) as $contentObject) {
-                $this->moveWizardItemToTop($wizardItems, $contentObject);
+        if (!empty($containers)) { // Moves the containers to the top:
+            foreach (array_reverse($containers) as $container) {
+                $this->moveWizardItemToTop($wizardItems, $container);
             }
         }
 
