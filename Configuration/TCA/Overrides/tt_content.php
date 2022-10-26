@@ -1,9 +1,11 @@
 <?php
 /**
  * The `tt_content` TCA override.
- *
- * @noinspection PhpFullyQualifiedNameUsageInspection
  */
+
+use T3v\T3vBackend\UserFunctions;
+use T3v\T3vCore\Utility\ExtensionUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') or die();
 
@@ -11,14 +13,14 @@ defined('TYPO3') or die();
 
 $namespace = 'T3v';
 $extensionKey = 't3v_backend';
-$extensionIdentifier = \T3v\T3vCore\Utility\ExtensionUtility::getIdentifier($extensionKey);
-$extensionSignature = \T3v\T3vCore\Utility\ExtensionUtility::getSignature($namespace, $extensionKey);
-$flexFormsFolder = \T3v\T3vCore\Utility\ExtensionUtility::getFlexFormsFolder($extensionKey);
-$lll = \T3v\T3vCore\Utility\ExtensionUtility::getLocallang($extensionKey, 'locallang_tca.xlf');
+$extensionIdentifier = ExtensionUtility::getIdentifier($extensionKey);
+$extensionSignature = ExtensionUtility::getSignature($namespace, $extensionKey);
+$flexFormsFolder = ExtensionUtility::getFlexFormsFolder($extensionKey);
+$lll = ExtensionUtility::getLocallang($extensionKey, 'locallang_tca.xlf');
 
 // === TCA ===
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
         'label' => [
@@ -32,18 +34,34 @@ $lll = \T3v\T3vCore\Utility\ExtensionUtility::getLocallang($extensionKey, 'local
             'l10n_mode' => 'prefixLangTitle',
             'exclude' => true
         ]
-   ]
+    ]
 );
 
 $GLOBALS['TCA']['tt_content']['ctrl']['label'] = 'header';
-$GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = \T3v\T3vBackend\UserFunctions::class . '->processLabel';
+$GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = UserFunctions::class . '->processLabel';
 
 // Adds the `label` field before the `CType` field in the `general` palette:
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'general',
     'label, --linebreak--',
     'before:CType'
+);
+
+// Removes the `subheader` field temporally:
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--palette--;;empty',
+    '',
+    'replace:subheader'
+);
+
+// Adds the `subheader` field back before the `header_link` field in the `headers` palette:
+ExtensionManagementUtility::addFieldsToPalette(
+    'tt_content',
+    'headers',
+    '--linebreak--,subheader,--linebreak--',
+    'before:header_link'
 );
 
 // === T3v Generator ===

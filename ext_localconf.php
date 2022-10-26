@@ -1,18 +1,25 @@
 <?php
+declare(strict_types=1);
+
 /**
  * The local extension configuration.
- *
- * @noinspection PhpFullyQualifiedNameUsageInspection
  */
+
+use T3v\T3vCore\Utility\ExtensionUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') or die();
 
-// (static function () {
-//     // === Variables ===
-//
-//     // $namespace = 'T3v';
-//     // $extensionKey = 't3v_backend';
-//     // $extensionSignature = \T3v\T3vCore\Utility\ExtensionUtility::getSignature($namespace, $extensionKey);
-//
-//     // === T3v Generator ===
-// })();
+(static function () {
+    // === Variables ===
+
+    $extensionKey = 't3v_backend';
+    $tsConfigFolder = ExtensionUtility::getTSConfigFolder($extensionKey);
+
+    // === TSconfig ===
+
+    ExtensionManagementUtility::addPageTSConfig(
+        "<INCLUDE_TYPOSCRIPT: source=\"$tsConfigFolder/Page.tsconfig\">"
+    );
+    // === T3v Generator ===
+})();

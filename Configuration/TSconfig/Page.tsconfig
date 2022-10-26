@@ -1,0 +1,57 @@
+/*
+  -----------------------------
+  | T3v Backend Page TSconfig |
+  -----------------------------
+*/
+
+/*
+  === New Content Element Wizard Configuration ===
+*/
+
+mod {
+  wizards {
+    newContentElement {
+      wizardItems {
+        container {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.container.header
+        }
+
+        contentObject {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.contentObject.header
+        }
+
+        custom {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.custom.header
+        }
+
+        form {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.form.header
+        }
+
+        gridelements {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.gridElements.header
+        }
+
+        legacy {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.legacy.header
+        }
+
+        menu {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.menu.header
+        }
+
+        plugins {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.plugins.header
+        }
+
+        special {
+          header = LLL:EXT:t3v_translations/Resources/Private/Language/locallang_ttc.xlf:mod.wizards.newContentElement.wizardItems.special.header
+        }
+      }
+    }
+  }
+}
+
+/*
+  === T3v Generator ===
+*/

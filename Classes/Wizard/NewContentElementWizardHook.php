@@ -29,7 +29,7 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
         $gridElements = [];
         $legacyElements = [];
         $menuElements = [];
-        $plugins = [];
+        $pluginElements = [];
         $specialElements = [];
 
         foreach ($wizardItems as $key => $value) {
@@ -53,7 +53,7 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
                 $formElements[] = $key;
             }
 
-            if (strpos($key, 'gridelement') !== false) {
+            if (strpos($key, 'gridelements') !== false) {
                 $gridElements[] = $key;
             }
 
@@ -65,8 +65,8 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
                 $menuElements[] = $key;
             }
 
-            if (strpos($key, 'plugin') !== false) {
-                $plugins[] = $key;
+            if (strpos($key, 'plugins') !== false) {
+                $pluginElements[] = $key;
             }
 
             if (strpos($key, 'special') !== false) {
@@ -80,9 +80,9 @@ class NewContentElementWizardHook implements NewContentElementWizardHookInterfac
             }
         }
 
-        if (!empty($plugins)) { // Moves the plugins to the top:
-            foreach (array_reverse($plugins) as $plugin) {
-                $this->moveWizardItemToTop($wizardItems, $plugin);
+        if (!empty($pluginElements)) { // Moves the plugin elements to the top:
+            foreach (array_reverse($pluginElements) as $pluginElement) {
+                $this->moveWizardItemToTop($wizardItems, $pluginElement);
             }
         }
 
