@@ -18,8 +18,7 @@ defined('TYPO3') or die();
 
     // === TSconfig ===
 
-    ExtensionManagementUtility::addPageTSConfig(
-        "<INCLUDE_TYPOSCRIPT: source=\"$tsConfigFolder/Page.tsconfig\">"
-    );
+    ExtensionManagementUtility::addPageTSConfig("<INCLUDE_TYPOSCRIPT: source=\"$tsConfigFolder/Page.tsconfig\">");
+
     // === T3v Generator ===
 })();

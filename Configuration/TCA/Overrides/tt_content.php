@@ -11,10 +11,7 @@ defined('TYPO3') or die();
 
 // === Variables ===
 
-$namespace = 'T3v';
 $extensionKey = 't3v_backend';
-$extensionIdentifier = ExtensionUtility::getIdentifier($extensionKey);
-$extensionSignature = ExtensionUtility::getSignature($namespace, $extensionKey);
 $flexFormsFolder = ExtensionUtility::getFlexFormsFolder($extensionKey);
 $lll = ExtensionUtility::getLocallang($extensionKey, 'locallang_tca.xlf');
 
