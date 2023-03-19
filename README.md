@@ -6,7 +6,20 @@
 Dependencies
 ------------
 
+### Core
+
 * TYPO3 CMS 9.5 or greater
+
+### Backend
+
+* Auto switch to list view extension
+* Masi extension
+* Paste reference extension
+* Save extension
+* Scroll extension
+
+### TYPO3voilà
+
 * T3v Core extension
 * T3v Translations extension
 

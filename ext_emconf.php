@@ -1,7 +1,5 @@
 <?php
-/** @var string $_EXTKEY */
-
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['t3v_backend'] = [
     'title' => 'T3v Backend',
     'description' => 'The backend extension of TYPO3voilà.',
     'author' => 'Maik Kempe',
@@ -16,6 +14,11 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '10.4.0-11.5.99',
+            'autoswitchtolistview' => '',
+            'masi' => '',
+            'paste_reference' => '',
+            'save' => '',
+            'scroll' => '',
             't3v_core' => '',
             't3v_translations' => ''
         ],

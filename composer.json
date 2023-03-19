@@ -36,15 +36,14 @@
   "replace": {
     "typo3-ter/t3v_backend": "self.version"
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://composer.typo3.org"
-    }
-  ],
   "require": {
     "php": ">= 7.4",
-    "typo3/cms-core": "^10.4.34 || ^11.5.22",
+    "typo3/cms-core": "^10.4.36 || ^11.5.25",
+    "georgringer/autoswitchtolistview": "^2.0",
+    "b13/masi": "^2.0",
+    "ehaerer/paste-reference": "^2.0",
+    "t3/save": "^1.2",
+    "t3/scroll": "^1.0",
     "t3v/t3v_core": "dev-develop",
     "t3v/t3v_translations": "dev-develop"
   },
