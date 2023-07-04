@@ -38,7 +38,7 @@
   },
   "require": {
     "php": ">= 7.4",
-    "typo3/cms-core": "^10.4.36 || ^11.5.25",
+    "typo3/cms-core": "^10.4.38 || ^11.5.28",
     "georgringer/autoswitchtolistview": "^2.0",
     "b13/masi": "^2.0",
     "ehaerer/paste-reference": "^2.0",
