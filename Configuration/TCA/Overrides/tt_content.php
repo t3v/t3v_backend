@@ -39,7 +39,7 @@ ExtensionManagementUtility::addTCAcolumns(
 $GLOBALS['TCA']['tt_content']['ctrl']['label'] = 'header';
 $GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = UserFunctions::class . '->processLabel';
 
-// Adds the `label` field before the `description` field in the `Notes` palette.
+// Adds the `label` field before the `CType` field in the `General` palette.
 ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'general',
@@ -59,6 +59,6 @@ ExtensionManagementUtility::addToAllTCAtypes(
 ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'headers',
-    '--linebreak--,subheader,--linebreak--',
+    '--linebreak--, subheader, --linebreak--',
     'before:header_link'
 );
