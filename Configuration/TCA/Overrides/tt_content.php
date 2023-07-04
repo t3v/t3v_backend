@@ -1,13 +1,15 @@
 <?php
-/**
- * The `tt_content` TCA override.
- */
+declare(strict_types=1);
 
 use T3v\T3vBackend\UserFunctions;
 use T3v\T3vCore\Utility\ExtensionUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') or die();
+
+/**
+ * The `tt_content` TCA override.
+ */
 
 // === Variables ===
 
@@ -37,7 +39,7 @@ ExtensionManagementUtility::addTCAcolumns(
 $GLOBALS['TCA']['tt_content']['ctrl']['label'] = 'header';
 $GLOBALS['TCA']['tt_content']['ctrl']['label_userFunc'] = UserFunctions::class . '->processLabel';
 
-// Adds the `label` field before the `CType` field in the `general` palette:
+// Adds the `label` field before the `description` field in the `Notes` palette.
 ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'general',
@@ -45,7 +47,7 @@ ExtensionManagementUtility::addFieldsToPalette(
     'before:CType'
 );
 
-// Removes the `subheader` field temporally:
+// Removes the `subheader` field temporally.
 ExtensionManagementUtility::addToAllTCAtypes(
     'tt_content',
     '--palette--;;empty',
@@ -53,12 +55,10 @@ ExtensionManagementUtility::addToAllTCAtypes(
     'replace:subheader'
 );
 
-// Adds the `subheader` field back before the `header_link` field in the `headers` palette:
+// Adds the `subheader` field back before the `header_link` field in the `Headlines` palette.
 ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'headers',
     '--linebreak--,subheader,--linebreak--',
     'before:header_link'
 );
-
-// === T3v Generator ===
